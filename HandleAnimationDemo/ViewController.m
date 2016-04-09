@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "HAHandleDemoView.h"
 
-@interface ViewController ()
+@interface ViewController ()<HAHandleDemoViewDelegate>
 
 @end
 
@@ -25,6 +25,7 @@
     CGFloat btnHeight = 30.f;
     
     HAHandleDemoView *view1 = [[HAHandleDemoView alloc]initWithFrame:CGRectMake((screenWidth-btnWidth)*0.5, 100, btnWidth, btnHeight)];
+    view1.delegate = self;
     [self.view addSubview:view1];
     
     HAHandleDemoView *view2 = [[HAHandleDemoView alloc]initWithFrame:CGRectMake((screenWidth-btnWidth)*0.25, 200, btnWidth, btnHeight)];
@@ -43,6 +44,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - HAHandleDemoViewDelegate
+- (void)animationCompleted{
+    NSLog(@"Animation comeplete!");
 }
 
 @end

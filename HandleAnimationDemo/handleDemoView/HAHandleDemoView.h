@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HAHandleDemoView : UIView
+@protocol HAHandleDemoViewDelegate <NSObject>
 
+@optional
+- (void)animationCompleted;
+
+@end
+
+@interface HAHandleDemoView : UIView
+@property (nonatomic, weak) id<HAHandleDemoViewDelegate> delegate;
 @end

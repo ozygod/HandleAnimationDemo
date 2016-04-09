@@ -66,6 +66,10 @@ static const NSTimeInterval shrinkDuration = 0.1f;
     self.bgView.transform = CGAffineTransformMakeScale(currentScale, currentScale);
     if (currentScale >= (currentMaxSide/bgViewRadius)) {
         [self.enlangerTimer invalidate];
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(animationCompleted)]) {
+            [self.delegate animationCompleted];
+        }
     }
 }
 
